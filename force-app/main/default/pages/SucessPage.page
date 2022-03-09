@@ -1,0 +1,20 @@
+<apex:page Controller="SuccessPageVfController" lightningStylesheets="true">   
+    <apex:includeLightning />   
+    <div id="LcDisplayId"></div> 
+    <script>
+    var stringvalue='{!s}';    
+    var integervalue='{!nn}';  
+    var sessionId='{!checkoutSessionId}';
+   alert(' sessionId '+sessionId);
+    // Here 'VfApp' Is Lightning Application Name
+    $Lightning.use("c:PaymentStatusApp", function() {
+        $Lightning.createComponent("c:paymentStatus",
+                                   { 
+                                    checkoutSessionId :sessionId   
+                                   },
+                                   "LcDisplayId",
+                                   function(component) {
+                                   });
+    });
+    </script>    
+</apex:page>
